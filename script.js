@@ -59,7 +59,7 @@ function renderExploreCards() {
 
 // load api
 function loadGoogleMapsApi(callbackName = "initMap") {
-  const apiKey = window.GOOGLE_API_KEY; // injected
+  const apiKey = window.GOOGLE_MAPS_API_KEY; // injected
 
   if (!apiKey) {
     console.error("Google Maps API key not found!");
