@@ -1,3 +1,5 @@
+const places = window.places;
+
 function sortByRating(data) {
   return data.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
 }
@@ -46,13 +48,29 @@ function renderExploreCards() {
     )
     .join("");
 
-  // Attach modal open listeners
+  // Modal trigger
   container.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", () => {
       const idx = card.getAttribute("data-idx");
       showPlaceModal(window.places[idx]);
     });
   });
+}
+
+// load api
+function loadGoogleMapsApi(callbackName = "initMap") {
+  const apiKey = window.GOOGLE_API_KEY; // injected
+
+  if (!apiKey) {
+    console.error("Google Maps API key not found!");
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callbackName}`;
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
 }
 
 function showPlaceModal(place) {
@@ -72,6 +90,21 @@ function showPlaceModal(place) {
     place.description || "";
 
   overlay.style.display = "flex";
+
+  // Try geocoding via API and show map
+  if (place.address) {
+    fetch(`/api/maps?address=${encodeURIComponent(place.address)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "OK" && data.results.length > 0) {
+          const { lat, lng } = data.results[0].geometry.location;
+          initMap(lat, lng);
+        } else {
+          console.warn("Geocoding failed:", data);
+        }
+      })
+      .catch((err) => console.error("API call failed:", err));
+  }
 }
 
 function closePlaceModal() {
@@ -132,9 +165,11 @@ let filteredData = [];
 const cardsToShow = 4;
 let currentCount = 0;
 
-// === DOM Ready code ===
+// window.initMap = initMap;
+
+// === On DOM Ready ===
 document.addEventListener("DOMContentLoaded", () => {
-  // Nav bar toggles
+  // Nav toggle
   const hamburger = document.querySelector(".hamburger-menu");
   const navLinks = document.querySelector(".nav-links");
   const navBar = document.querySelector("nav");
@@ -142,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hamburger && navLinks && navBar) {
     hamburger.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation();
       hamburger.classList.toggle("active");
       navLinks.classList.toggle("active");
       navBar.classList.toggle("active");
@@ -165,9 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fetch and render matcha places data
+  loadGoogleMapsApi();
+
+  // Load matcha data
   fetch("matcha_places.json")
-    .then((response) => response.json())
+    .then((res) => res.json())
     .then((data) => {
       matchaData = sortByRating(data);
       filteredData = matchaData;
@@ -175,29 +211,28 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCards(filteredData.slice(0, currentCount));
       updateLoadMoreButton();
     })
-    .catch((err) => console.error("Failed to load matcha_places.json:", err));
+    .catch((err) => console.error("Failed to load JSON:", err));
 
-  // Filters dropdown
+  // Filters
   const select = document.querySelector(".filters-row select");
   if (select) {
     select.addEventListener("change", () => {
       const city = select.value;
-      if (!city) {
-        filteredData = sortByRating(matchaData);
-      } else {
-        filteredData = sortByRating(
-          matchaData.filter((place) =>
-            place.location.toLowerCase().includes(city.toLowerCase())
+      filteredData = city
+        ? sortByRating(
+            matchaData.filter((place) =>
+              place.location.toLowerCase().includes(city.toLowerCase())
+            )
           )
-        );
-      }
+        : sortByRating(matchaData);
+
       currentCount = cardsToShow;
       renderCards(filteredData.slice(0, currentCount));
       updateLoadMoreButton();
     });
   }
 
-  // Load more button
+  // Load more
   const btn = document.getElementById("load-more-btn");
   if (btn) {
     btn.addEventListener("click", () => {
@@ -207,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Render explore cards & modal setup
+  // Explore cards
   renderExploreCards();
 
   const closeBtn = document.getElementById("close-modal");

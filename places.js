@@ -8,7 +8,7 @@ window.places = [
     location: "New York City",
     image: "images/sorate.png",
     rating: 9.2,
-    description: "A cozy spot for high-quality matcha in SoHo."
+    description: "A cozy spot for high-quality matcha in SoHo.",
   },
   {
     name: "12 Matcha",
@@ -16,7 +16,7 @@ window.places = [
     location: "New York City",
     image: "images/12-matcha.png",
     rating: 9.4,
-    description: "Minimalist matcha bar with a focus on premium Japanese tea."
+    description: "Minimalist matcha bar with a focus on premium Japanese tea.",
   },
   {
     name: "Lille Petra",
@@ -24,7 +24,7 @@ window.places = [
     location: "Copenhagen",
     image: "images/lille-petra.png",
     rating: 9.3,
-    description: "Chic cafe in Copenhagen serving delicious matcha."
+    description: "Chic cafe in Copenhagen serving delicious matcha.",
   },
   {
     name: "Maru Coffee",
@@ -32,7 +32,7 @@ window.places = [
     location: "Los Angeles",
     image: "images/maru.png",
     rating: 9.3,
-    description: "Popular LA coffee shop with a great matcha latte."
+    description: "Popular LA coffee shop with a great matcha latte.",
   },
   {
     name: "LOUISE ROE",
@@ -40,7 +40,7 @@ window.places = [
     location: "Copenhagen",
     image: "images/louise-roe.png",
     rating: 9.4,
-    description: "Design gallery and cafe with a unique matcha experience."
+    description: "Design gallery and cafe with a unique matcha experience.",
   },
   {
     name: "Kettl Tea - Bowery",
@@ -48,7 +48,7 @@ window.places = [
     location: "New York City",
     image: "images/kettl.png",
     rating: 9.4,
-    description: "Japanese tea house specializing in matcha and wagashi."
+    description: "Japanese tea house specializing in matcha and wagashi.",
   },
   {
     name: "Chitchat Coffee + Matcha",
@@ -56,13 +56,13 @@ window.places = [
     location: "Los Angeles",
     image: "images/chitchat.png",
     rating: 9.0,
-    description: "Trendy spot for matcha drinks and socializing in LA."
+    description: "Trendy spot for matcha drinks and socializing in LA.",
   },
   {
     name: "Homemade",
     location: "At Home",
     image: "images/at-home.png",
     rating: 10.0,
-    description: "My own kitchen creation!"
-  }
-]; 
+    description: "My own kitchen creation!",
+  },
+];

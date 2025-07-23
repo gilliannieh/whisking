@@ -9,17 +9,11 @@
 
     <!-- Load scripts -->
     <script src="places.js"></script>
-    <script src="config.js"></script>
-
-    <!-- Connect to Google Maps API  -->
     <script>
-        // Dynamically load the Google Maps script
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap`;
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
+        // This injects the API key into the global window object
+        window.GOOGLE_MAPS_API_KEY = "YOUR_REAL_API_KEY_HERE";
     </script>
+    <script src="script.js"></script>
 
 </head>
 
@@ -65,7 +59,7 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
     
 </body>
 
