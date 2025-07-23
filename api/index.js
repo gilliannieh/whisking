@@ -1,5 +1,5 @@
 export default function handler(req, res) {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
+  const apiKey = process.env.GOOGLE_API_KEY || "";
 
   const html = `
   <!DOCTYPE html>
@@ -11,7 +11,7 @@ export default function handler(req, res) {
     <!-- body content -->
 
     <script>
-      window.GOOGLE_MAPS_API_KEY = "${apiKey}";
+      window.GOOGLE_API_KEY = "${apiKey}";
     </script>
     <script src="script.js"></script>
   </body>
