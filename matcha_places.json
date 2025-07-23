@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Sorate Matcha",
+        "location": "New York City",
+        "image": "images/sorate.png",
+        "rating": 9.2
+    },
+    {
+        "name": "Kettl Matcha",
+        "location": "New York City, Brooklyn",
+        "image": "images/kettl.png",
+        "rating": 9.3
+    },
+    {
+        "name": "Kijitora",
+        "location": "New York City, Brooklyn",
+        "image": "images/matcha3.png",
+        "rating": 9.2
+    },
+    {
+        "name": "Matcha Cafe Maiko",
+        "location": "San Francisco",
+        "image": "images/matcha3.png",
+        "rating": 9.0
+    },
+    {
+        "name": "Sawada Coffee",
+        "location": "Chicago",
+        "image": "images/matcha3.png",
+        "rating": 8.5
+    },
+    {
+        "name": "Community Goods",
+        "location": "Los Angeles",
+        "image": "images/matcha3.png",
+        "rating": 9.6
+    },
+    {
+        "name": "Community Goods",
+        "location": "Los Angeles",
+        "image": "images/matcha3.png",
+        "rating": 9.6
+    }
+]

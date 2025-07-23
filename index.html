@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">
+                <img src="images/whisking-logo.svg" alt="Whisking matcha whisk in bowl logo" class="nav-logo" />
+            </a>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="map.html">Map</a>
+                <a href="criteria.html">Criteria & History</a>
+                <a href="diy.html">DIY</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="row">
+            <div class="column">
+                <figure>
+                    <img src="images/louise-roe.png" alt="Louise Roe matcha in Copenhagen" class="column-image">
+                    <figcaption>Source: Gillian Nieh</figcaption>
+                </figure>
+            </div>
+            <div class="column">
+                <h1>Whisk.ing</h1>
+                <p>Matcha isn't just a drink—it's a ritual, a culture, and a flavor experience like no other. Whisk.ing
+                    is your guide to
+                    the world of matcha. From ceremonial-grade finds to casual lattes around the corner, and whether
+                    you're a
+                    seasoned sipper or
+                    new to the scene, we're here to help you discover, compare, and savor the best matcha around.</p>
+                <div class="button-row">
+                    <a href="criteria.html" class="button">Criteria</a>
+                    <a href="#rankings" class="button">Rankings</a>
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <div class="column">
+                <h2>Matcha Map</h2>
+                <p>Find matcha near you or explore new cities with my curated Matcha Map. Every spot is reviewed and
+                    ranked by me!
+                </p>
+                <div class="button-row">
+                    <a href="map.html" class="button">Take me to the Map</a>
+                </div>
+            </div>
+            <div class="column">
+                <img src="images/matcha-map.png" alt="Green map graphic with matcha latte pins" class="column-image" />
+            </div>
+        </section>
+
+        <section class="explore-section" id="rankings">
+            <h2>Best Matchas I've Had...</h2>
+            <div class="card-row" id="explore-card-row"></div>
+        </section>
+        <!-- Modal Overlay for Place Details -->
+        <div id="place-modal-overlay" style="display:none;">
+            <div id="place-modal" class="place-modal">
+                <button id="close-modal" class="close-modal">&times;</button>
+                <div class="modal-content">
+                    <img id="modal-image" class="modal-image" src="" alt="" />
+                    <div class="modal-info">
+                        <h3 id="modal-title"></h3>
+                        <div class="modal-location-rating">
+                            <span id="modal-location"></span> &bull; <span id="modal-rating"></span>
+                        </div>
+                        <div id="modal-address" class="modal-address"></div>
+                        <div id="modal-description" class="modal-description"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-row">
+            <div class="footer-col footer-brand">
+                <span class="footer-logo">WHISK.ING</span>
+            </div>
+            <div class="footer-col footer-pages">
+                <span class="footer-title">Pages</span>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="criteria.html">Criteria & History</a></li>
+                    <li><a href="diy.html">DIY</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <span class="footer-title">Contact</span><br />
+                <a href="mailto:gilliannieh@gmail.com" class="footer-email">gilliannieh@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+    <script src="places.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matcha Map</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Load scripts -->
+    <script src="places.js"></script>
+    <script src="config.js"></script>
+
+    <!-- Connect to Google Maps API  -->
+    <script>
+        // Dynamically load the Google Maps script
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">
+                <img src="images/whisking-logo.svg" alt="Whisking matcha whisk in bowl logo" class="nav-logo" />
+            </a>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links">
+                <a href="map.html">Map</a>
+                <a href="criteria.html">Criteria & History</a>
+                <a href="diy.html">DIY</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="centered-main">
+        <h1 style="margin-bottom: 32px;">Matcha Map</h1>
+        <div id="map" style="width: 100%; height: 500px;"></div>
+    </main>
+
+    <footer>
+        <div class="footer-row">
+            <div class="footer-col footer-brand">
+                <span class="footer-logo">WHISK.ING</span>
+            </div>
+            <div class="footer-col footer-pages">
+                <span class="footer-title">Pages</span>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="criteria.html">Criteria & History</a></li>
+                    <li><a href="diy.html">DIY</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <span class="footer-title">Contact</span><br />
+                <a href="mailto:gilliannieh@gmail.com" class="footer-email">gilliannieh@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

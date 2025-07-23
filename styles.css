@@ -1,0 +1,758 @@
+/* =====================
+   1. GLOBAL STYLES
+   ===================== */
+body,
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --light: #fdfbf6;
+    --dark-green: #204e21;
+    --grey: #dddddd;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    line-height: 1.6;
+    background-color: #f2ede5;
+    color: #333;
+    /* padding: 20px; */
+    opacity: 0;
+    animation: fadeInBody 0.5s ease forwards;
+}
+
+@keyframes fadeInBody {
+    to {
+        opacity: 1;
+    }
+}
+
+main {
+    padding: 20px;
+    max-width: 80vw;
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark-green);
+}
+
+/* =====================
+   2. HEADER & NAVIGATION (All Pages)
+   ===================== */
+header {
+    color: var(--light);
+    text-align: center;
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    height: 40px;
+    width: 40px;
+    object-fit: fit;
+    margin-right: 20px;
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 16px;
+    padding: 20px 28px;
+    background: var(--dark-green);
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+    transition: background 0.3s ease;
+}
+
+.hamburger-menu span {
+    width: 28px;
+    height: 3px;
+    background: var(--light);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 7.5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -7.5px);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    margin: 0 10px;
+    color: var(--light);
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+/* =====================
+   3. HOME PAGE STYLES (index.html)
+   ===================== */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* ensures responsiveness on smaller screens */
+    gap: 32px;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.column {
+    flex: 1;
+    min-width: 300px;
+    align-items: center;
+}
+
+/* Explore Section */
+.explore-section {
+    margin-top: 40px;
+    padding: 30px 0;
+    background: #fff;
+    align-items: center;
+    border-radius: 12px;
+    /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);*/
+    text-align: center;
+}
+
+.explore-section h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.filters-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.filters-row select {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Ranking cards */
+.card-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fafafa;
+    width: 236px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 12px 0px;
+    position: relative;
+    border-radius: 8px;
+    border-top: 4px solid #81c784;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(32, 78, 33, 0.15);
+}
+
+.card-image {
+    width: 236px;
+    max-width: 236px;
+    height: 200px;
+    object-fit: cover;
+    background: #e0e0e0;
+    margin-bottom: 4px;
+    align-self: flex-end;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.card-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.button {
+    padding: 12px 32px;
+    margin-top: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #2e7d32, #1b5e20);
+    color: #fff;
+    cursor: pointer;
+    /* box-shadow: 0 6px 12px rgba(32, 78, 33, 0.2); */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+@keyframes pulseGreen {
+    0% {
+        box-shadow: 0 0 0 0 rgba(32, 78, 33, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(32, 78, 33, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(32, 78, 33, 0);
+    }
+}
+
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(32, 78, 33, 0.25);
+    background: linear-gradient(145deg, #1e6e25, #14521a);
+    animation: pulseGreen 1s infinite;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+
+.button-row {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 12px;
+}
+
+/* Explore Section Modal (index.html) */
+#place-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.place-modal {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 520px;
+    width: 95vw;
+    box-shadow: 0 8px 32px rgba(32, 78, 33, 0.18);
+    padding: 0;
+    position: relative;
+    animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #204e21;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 32px 24px 24px 24px;
+    gap: 24px;
+}
+
+.modal-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #e0e0e0;
+    flex-shrink: 0;
+}
+
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-location-rating {
+    color: #236426;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.modal-address {
+    font-size: 0.98rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.modal-description {
+    font-size: 1rem;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .place-modal {
+        max-width: 98vw;
+    }
+
+    .modal-content {
+        align-items: center;
+        padding: 18px 8px 12px 8px;
+        gap: 12px;
+    }
+
+    .modal-image {
+        width: 60%;
+    }
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.centered-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.column-image {
+    background: #e0e0e0;
+    width: 100%;
+    max-width: 100%;
+    height: 75%;
+    max-height: 1000px;
+    margin: 32px auto 0 auto;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.logo-image {
+    background: #e0e0e0;
+    width: 48px;
+    height: 48px;
+}
+
+/* =====================
+   4. MAP PAGE STYLES (map.html)
+   ===================== */
+.map-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #204e21;
+    text-align: center;
+    margin: 40px 0 24px 0;
+    letter-spacing: 1px;
+}
+
+#map {
+    height: 480px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 32px auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(32, 78, 33, 0.10);
+    display: block;
+    transition: box-shadow 0.3s ease;
+}
+
+#map:hover {
+    box-shadow: 0 4px 24px rgba(32, 78, 33, 0.2);
+}
+
+.map-column-image {
+    background: #e0e0e0;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin: 32px auto 0 auto;
+    border-radius: 12px;
+}
+
+/* =====================
+   5. CRITERIA PAGE STYLES (criteria.html)
+   ===================== */
+.criteria-grid-section {
+    margin: 48px 0 0 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.criteria-card {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 24px 24px 24px;
+    min-width: 180px;
+    min-height: 100px;
+    border-radius: 12px;
+    /* aspect-ratio: 1/1; */
+}
+
+.criteria-number {
+    width: 38px;
+    height: 38px;
+    background: var(--grey);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--dark-green);
+    margin-bottom: 12px;
+}
+
+.criteria-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--dark-green);
+}
+
+.criteria-desc {
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* =====================
+   6. DIY PAGE STYLES (diy.html)
+   ===================== */
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-items: center;
+    padding: 0px;
+}
+
+.step-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark-green);
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 24px 0;
+}
+
+figcaption {
+    font-size: 0.95rem;
+    color: #595959;
+    margin-top: 6px;
+    text-align: center;
+}
+
+/* =====================
+   7. FOOTER STYLES
+   ===================== */
+footer {
+    text-align: left;
+    padding: 30px;
+    background: var(--dark-green);
+    margin-top: 20px;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 32px 0 16px 0;
+    max-width: 80vw;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--light);
+    letter-spacing: 2px;
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--light);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: text-decoration 0.2s;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-contact {
+    text-align: right;
+}
+
+.footer-email {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    color: var(--light);
+    word-break: break-all;
+}
+
+/* =====================
+   8. MEDIA QUERIES (Grouped by Page/Component)
+   ===================== */
+@media (max-width: 900px) {
+    .criteria-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 24px 0 8px 0;
+    }
+
+    .footer-contact {
+        text-align: left;
+    }
+
+    .row+.row {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .map-column-image {
+        width: 100%;
+        max-width: 100vw;
+        margin: 16px 0 0 0;
+    }
+
+    #map {
+        max-width: 98vw;
+        height: 260px;
+    }
+
+    .map-title {
+        font-size: 1.3rem;
+        margin: 24px 0 14px 0;
+    }
+
+    .criteria-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    nav {
+        padding: 8px;
+    }
+
+    nav.active {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        /* example: only bottom corners rounded when open */
+    }
+
+
+    .row {
+        gap: 16px;
+        min-height: unset !important;
+        height: auto !important;
+    }
+
+    .column>* {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    figure {
+        margin-bottom: 0 !important;
+    }
+
+    .nav-logo {
+        margin-right: 0;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        background: none;
+        border-radius: 4px;
+        /* position: absolute; */
+        right: 16px;
+        top: 16px;
+        z-index: 1001;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--dark-green);
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        margin-top: -10px;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        max-height: 300px;
+        /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); */
+    }
+
+    .nav-links a {
+        padding: 20px 0;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+}
